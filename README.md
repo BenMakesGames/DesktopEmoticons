@@ -1,6 +1,6 @@
 # DesktopEmoticons
 
-Runs in your system tray. Right or left click to pull up a menu of categorized emoticons ヾ（＾ヮ＾)ﾉ
+Runs in your system tray. Right or left click to pull up a menu of categorized emoticons. Click on an emoticon to immediately copy it to your clipboard ヾ（＾ヮ＾)ﾉ
 
 Easy to code in your own emoticons (assuming you have Visual Studio). Look near the top of Program.cs to see how the emoticons are added.
 
