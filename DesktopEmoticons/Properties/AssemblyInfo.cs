@@ -1,16 +1,15 @@
-﻿using System.Reflection;
+using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("DesktopEmoticons")]
+[assembly: AssemblyTitle("DesktopEmoticons, by Ben Hendel-Doying")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("DesktopEmoticons")]
-[assembly: AssemblyCopyright("Copyright ©  2017")]
+[assembly: AssemblyProduct("DesktopEmoticons, by Ben Hendel-Doying")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
