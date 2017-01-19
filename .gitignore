@@ -16,8 +16,9 @@ x64/
 x86/
 build/
 bld/
-#[Bb]in/
+[Bb]in/
 [Oo]bj/
+![Bb]in/Release/DesktopEmoticons.exe
 
 # Visual C++ cache files
 ipch/
