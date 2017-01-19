@@ -91,7 +91,8 @@ namespace DesktopEmoticons
         private NotifyIcon _notifyIcon;
         private GlobalHotKeyListener _hotKeyListener;
         
-        private static IntPtr _previousWindow = IntPtr.Zero;
+        private IntPtr _previousWindow = IntPtr.Zero;
+        private IntPtr _focusWindow = IntPtr.Zero;
 
         public DesktopEmoticons()
         {
@@ -100,19 +101,25 @@ namespace DesktopEmoticons
                 Icon = new Icon(Properties.Resources.Emoticon, SystemInformation.SmallIconSize),
                 Visible = true,
 
-                ContextMenu = BuildContextMenu(),
+                ContextMenuStrip = BuildContextMenu(),
             };
 
             MethodInfo notifyIconShowContextMenu = typeof(NotifyIcon).GetMethod("ShowContextMenu", BindingFlags.Instance | BindingFlags.NonPublic);
 
-            _notifyIcon.Click += (s, e) =>
-            {
-                notifyIconShowContextMenu.Invoke(_notifyIcon, null);
-            };
-
-            _notifyIcon.ContextMenu.Collapse += (s, e) =>
+            _notifyIcon.MouseUp += (s, e) =>
             {
                 _previousWindow = IntPtr.Zero;
+
+                if (e.Button == MouseButtons.Left)
+                {
+                    if (_notifyIcon.ContextMenuStrip.Visible)
+                        _notifyIcon.ContextMenuStrip.Hide();
+                    else
+                    {
+                        MethodInfo mi = typeof(NotifyIcon).GetMethod("ShowContextMenu", BindingFlags.Instance | BindingFlags.NonPublic);
+                        mi.Invoke(_notifyIcon, null);
+                    }
+                }
             };
 
             _hotKeyListener = new GlobalHotKeyListener(GlobalHotKey.WIN | GlobalHotKey.SHIFT, Keys.OemSemicolon);
@@ -120,44 +127,44 @@ namespace DesktopEmoticons
             _hotKeyListener.HotKey += (s, e) =>
             {
                 _previousWindow = GetForegroundWindow();
-                notifyIconShowContextMenu.Invoke(_notifyIcon, null);
+
+                MethodInfo mi = typeof(NotifyIcon).GetMethod("ShowContextMenu", BindingFlags.Instance | BindingFlags.NonPublic);
+                mi.Invoke(_notifyIcon, null);
             };
         }
 
-        private ContextMenu BuildContextMenu()
+        private ContextMenuStrip BuildContextMenu()
         {
-            List<MenuItem> items = new List<MenuItem>();
+            ContextMenuStrip menuStrip = new ContextMenuStrip();
 
             foreach (string category in EMOTICONS.Keys)
             {
-                List<MenuItem> subItems = new List<MenuItem>();
+                List<ToolStripMenuItem> subItems = new List<ToolStripMenuItem>();
 
                 foreach (string emoticon in EMOTICONS[category])
                 {
-                    MenuItem item = new MenuItem(emoticon);
-
-                    item.Click += (s, e) =>
+                    ToolStripMenuItem item = new ToolStripMenuItem(emoticon, null, (s, e) =>
                     {
                         Clipboard.SetText(emoticon);
 
                         if (_previousWindow != IntPtr.Zero)
                         {
-                            //SetForegroundWindow(_previousWindow);
+                            SetForegroundWindow(_previousWindow);
                         }
-                    };
+                    });
 
                     subItems.Add(item);
                 }
 
-                items.Add(new MenuItem(category, subItems.ToArray()));
+                menuStrip.Items.Add(new ToolStripMenuItem(category, null, subItems.ToArray()));
             }
 
-            items.Add(new MenuItem("Exit", (s, e) => {
+            menuStrip.Items.Add(new ToolStripMenuItem("Exit", null, (s, e) => {
                 _notifyIcon.Visible = false;
                 Application.Exit();
             }));
 
-            return new ContextMenu(items.ToArray());
+            return menuStrip;
         }
     }
 }
