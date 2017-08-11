@@ -14,6 +14,7 @@ namespace DesktopEmoticons
             { "Animals", new string[] {
                 @"ʕ •ᴥ•ʔ",
                 @"▼・ᴥ・▼",
+                @"^ↀᴥↀ^",
             } },
 
             { "CONCERN", new string[] {
@@ -25,6 +26,7 @@ namespace DesktopEmoticons
 
             { "Disbelief", new string[] {
                 @"( ͠° ͟ʖ ͡°)",
+                @"¬_¬",
             } },
 
             { "FAILURE", new string[] {
@@ -34,7 +36,6 @@ namespace DesktopEmoticons
             } },
 
             { "Flirtatious", new string[] {
-                @"(◡‿◡✿)",
                 @"( ˘ ³˘)♥",
                 @"\( ͡° ͜/// ͡°)/",
                 @"ԅ|.͡° ڡ ͡°.|ᕤ",
@@ -50,7 +51,8 @@ namespace DesktopEmoticons
                 @"=^_^=",
                 @"(*ﾟｰﾟ)ゞ",
                 @"*:ﾟ*｡⋆ฺ(*´◡`)",
-                @"(✿ꈍ。 ꈍ✿)",
+                @"^̮^",
+                @"(◡‿◡✿)",
             } },
 
             { "I dunno!", new string[] {
@@ -66,6 +68,10 @@ namespace DesktopEmoticons
                 @"┏|￣＾￣* |┛",
             } },
 
+            { "Sad...", new string[] {
+                @"(ノ﹏ヽ)"
+            } },
+
             { "Success!", new string[] {
                 @"(ง ͡° ͜ʖ ͡°)ง",
                 @"ヾ（＾ヮ＾)ﾉ",
@@ -73,12 +79,18 @@ namespace DesktopEmoticons
                 @"＼（＠￣∇￣＠）／",
             } },
 
-            { "Misc.", new string[] {
+            { "Whoa!", new string[] {
+                @"\(✪o✪)/",
                 @"┗|・o・|┛",
+            } },
+
+            { "Misc.", new string[] {
                 @"（￣へ￣）",
                 @"( ・_・)ノ",
                 @"(ᵕ≀ ̠ᵕ )",
                 @"♬♫♪◖(●。●)◗♪♫♬",
+                @"(∩^o^)⊃━☆ﾟ.*･｡ﾟ",
+                @"(✿ꈍ。 ꈍ✿)",
             } }
         };
 

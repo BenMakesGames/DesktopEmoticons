@@ -4,6 +4,7 @@ using System.Runtime.InteropServices;
 
 namespace DesktopEmoticons
 {
+    // largely copy-pasted from https://github.com/curtisrutland/LowLevelHooks
     public class GlobalHotKey
     {
         //modifiers
